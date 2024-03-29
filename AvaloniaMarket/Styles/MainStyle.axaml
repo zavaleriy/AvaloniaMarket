@@ -1,0 +1,132 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- -->
+            <StackPanel>
+                <!-- Header -->
+                <StackPanel Orientation="Horizontal">
+                    <Border Classes="header-border">
+                        <Button Classes="header-button">
+                            <StackPanel Classes="header-logo">
+                                <Image Source="/Assets/shopping-cart-avalonia.png"
+                                       Height="50"/>
+                                <TextBlock VerticalAlignment="Center"
+                                           Text="AM" FontSize="32"/>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+                    <TextBox Classes="search" Watermark="Поиск" VerticalAlignment="Center"
+                             MinWidth="400"/>
+                    
+                    <StackPanel Classes="nav-buttons" Orientation="Horizontal">
+                        <Button>
+                            <StackPanel>
+                                <PathIcon Data="m25.714 10.286h.027c.465 0 .885.192 1.185.502.31.301.502.721.502 1.186v.028-.001.027c0 .465-.192.885-.502 1.185-.301.31-.721.502-1.186.502-.009 0-.019 0-.028 0h.001-.201l-1.541 8.869c-.069.413-.283.767-.587 1.015l-.003.002c-.29.249-.67.401-1.085.401-.004 0-.008 0-.013 0h-17.142c-.004 0-.008 0-.012 0-.415 0-.795-.152-1.087-.403l.002.002c-.307-.251-.52-.604-.588-1.008l-.001-.01-1.541-8.869h-.201c-.008 0-.017 0-.027 0-.465 0-.885-.192-1.185-.502-.31-.301-.502-.721-.502-1.186 0-.009 0-.019 0-.028v.001c0-.008 0-.017 0-.027 0-.465.192-.885.502-1.185.301-.31.721-.502 1.186-.502h.028-.001zm-19.223 10.714c.236-.017.442-.13.581-.3l.001-.001c.131-.146.211-.339.211-.552 0-.025-.001-.05-.003-.074v.003l-.429-5.572c-.017-.236-.13-.442-.3-.581l-.001-.001c-.146-.131-.339-.211-.552-.211-.025 0-.05.001-.074.003h.003c-.236.017-.442.13-.581.3l-.001.001c-.131.146-.211.339-.211.552 0 .025.001.05.003.074v-.003l.429 5.572c.015.224.118.422.274.562l.001.001c.149.141.35.228.572.228h.011-.001zm5.505-.856v-5.572c0-.002 0-.005 0-.008 0-.234-.097-.445-.254-.594-.15-.157-.361-.254-.595-.254-.003 0-.005 0-.008 0-.002 0-.005 0-.008 0-.234 0-.445.097-.594.254-.157.15-.254.361-.254.595v.008 5.572.008c0 .234.097.445.254.594.15.157.361.254.595.254h.008.008c.234 0 .445-.097.594-.254.159-.15.258-.363.258-.598 0-.002 0-.004 0-.006zm5.143 0v-5.572c0-.002 0-.005 0-.008 0-.234-.097-.445-.254-.594-.15-.157-.361-.254-.595-.254-.003 0-.005 0-.008 0-.002 0-.005 0-.008 0-.234 0-.445.097-.594.254-.157.15-.254.361-.254.595v.008 5.572.008c0 .234.097.445.254.594.15.157.361.254.595.254h.008.008c.234 0 .445-.097.594-.254.159-.15.258-.363.258-.598 0-.002 0-.004 0-.006zm4.714.066.429-5.572c.002-.021.003-.046.003-.071 0-.212-.08-.406-.211-.553l.001.001c-.141-.172-.347-.285-.58-.302h-.003c-.021-.002-.046-.003-.071-.003-.212 0-.406.08-.553.211l.001-.001c-.172.141-.285.347-.302.58v.003l-.429 5.572c-.002.021-.003.046-.003.071 0 .212.08.406.211.553l-.001-.001c.141.172.347.285.58.302h.003.067.01c.222 0 .423-.087.573-.228.159-.141.263-.34.279-.564v-.003zm-15.478-16.3-1.245 5.518h-1.768l1.352-5.906c.163-.785.59-1.45 1.182-1.915l.007-.005c.571-.464 1.306-.744 2.107-.744h.038-.002 2.236c0-.002 0-.005 0-.008 0-.234.097-.445.254-.594.15-.157.361-.255.596-.255h.012 5.142.008c.234 0 .445.097.594.254.157.15.254.361.254.595v.008h2.236.037c.801 0 1.536.28 2.112.748l-.006-.005c.599.47 1.025 1.135 1.185 1.899l.004.021 1.352 5.906h-1.768l-1.245-5.518c-.095-.392-.312-.724-.606-.962l-.003-.003c-.282-.233-.647-.375-1.046-.375-.007 0-.014 0-.02 0h-2.235v.008c0 .234-.097.445-.254.594-.15.157-.361.254-.595.254-.003 0-.005 0-.008 0h-5.142c-.002 0-.005 0-.008 0-.234 0-.445-.097-.594-.254-.157-.15-.254-.361-.254-.595 0-.003 0-.005 0-.008h-2.236c-.006 0-.013 0-.019 0-.398 0-.764.142-1.048.377l.003-.002c-.297.242-.512.574-.603.954l-.002.012z" 
+                                          Foreground="DarkGray"/>
+                                <TextBlock>Корзина</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button>
+                            <StackPanel>
+                                <PathIcon Data="M12.8198687,5.57958759 L11.9991485,6.40209417 L11.1758977,5.57884333 C9.07682963,3.47977526 5.67356786,3.47977526 3.5744998,5.57884333 C1.47543173,7.6779114 1.47543173,11.0811732 3.5744998,13.1802412 L11.4698687,21.0756101 C11.7627619,21.3685033 12.2376356,21.3685033 12.5305288,21.0756101 L20.4319958,13.1787767 C22.5263889,11.0727481 22.5299763,7.6790351 20.4305288,5.57958759 C18.3276384,3.4766972 14.9227559,3.47670037 12.8198687,5.57958759 Z M19.3684016,12.1210587 L12.0001987,19.4846198 L4.63515997,12.1195811 C3.12187834,10.6062994 3.12187834,8.15278513 4.63515997,6.6395035 C6.1484416,5.12622187 8.60195589,5.12622187 10.1152375,6.6395035 L11.4726817,7.99694767 C11.7705471,8.2948131 12.2552416,8.28900906 12.545889,7.98409641 L13.8805288,6.64024776 C15.3976301,5.12314654 17.8527652,5.12314425 19.3698687,6.64024776 C20.8835151,8.15389424 20.8809293,10.6001281 19.3684016,12.1210587 Z" 
+                                    Foreground="DarkGray"/>
+                                <TextBlock>Избранное</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button>
+                            <StackPanel>
+                                <PathIcon Data="M12.4856 1.12584C12.1836 0.958052 11.8164 0.958052 11.5144 1.12584L2.51436 6.12584L2.5073 6.13784L2.49287 6.13802C2.18749 6.3177 2 6.64568 2 7V16.9999C2 17.3631 2.19689 17.6977 2.51436 17.874L11.5022 22.8673C11.8059 23.0416 12.1791 23.0445 12.4856 22.8742L21.4856 17.8742C21.8031 17.6978 22 17.3632 22 17V7C22 6.64568 21.8125 6.31781 21.5071 6.13813C21.4996 6.13372 21.4921 6.12942 21.4845 6.12522L12.4856 1.12584ZM5.05923 6.99995L12.0001 10.856L14.4855 9.47519L7.74296 5.50898L5.05923 6.99995ZM16.5142 8.34816L18.9409 7L12 3.14396L9.77162 4.38195L16.5142 8.34816ZM4 16.4115V8.69951L11 12.5884V20.3004L4 16.4115ZM13 20.3005V12.5884L20 8.69951V16.4116L13 20.3005Z"
+                                          Foreground="DarkGray"/>
+                                <TextBlock>Заказы</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button>
+                            <StackPanel>
+                                <PathIcon Data="M35.7502,28 C38.0276853,28 39.8876578,29.7909151 39.9950978,32.0427546 L40,32.2487 L40,33 C40,36.7555 38.0583,39.5669 35.0798,41.3802 C32.1509,43.1633 28.2139,44 24,44 C19.7861,44 15.8491,43.1633 12.9202,41.3802 C10.0319285,39.6218485 8.11862909,36.9249713 8.00532378,33.3388068 L8,33 L8,32.2489 C8,29.9703471 9.79294995,28.1122272 12.0440313,28.0048972 L12.2499,28 L35.7502,28 Z M35.7502,30.5 L12.2499,30.5 C11.331345,30.5 10.5787597,31.2066575 10.5057976,32.1054618 L10.5,32.2489 L10.5,33 C10.5,35.7444 11.8602,37.8081 14.2202,39.2448 C16.6297,40.7117 20.0677,41.5 24,41.5 C27.9323,41.5 31.3703,40.7117 33.7798,39.2448 C36.0555143,37.8594107 37.4015676,35.8910074 37.4948116,33.2914406 L37.5,33 L37.5,32.2488 C37.5,31.331195 36.7934328,30.5787475 35.8937801,30.5057968 L35.7502,30.5 Z M24,4 C29.5228,4 34,8.47715 34,14 C34,19.5228 29.5228,24 24,24 C18.4772,24 14,19.5228 14,14 C14,8.47715 18.4772,4 24,4 Z M24,6.5 C19.8579,6.5 16.5,9.85786 16.5,14 C16.5,18.1421 19.8579,21.5 24,21.5 C28.1421,21.5 31.5,18.1421 31.5,14 C31.5,9.85786 28.1421,6.5 24,6.5 Z"
+                                          Foreground="DarkGray"/>
+                                <TextBlock>Войти</TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    
+                </StackPanel>
+                
+                
+
+            </StackPanel>
+            <!-- -->
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="Window">
+        <Setter Property="WindowStartupLocation" Value="CenterScreen"/>
+        <Setter Property="CanResize" Value="False"/>
+        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
+        <Setter Property="Icon" Value="/Assets/favicon.ico"/>
+    </Style>
+    
+    <!-- Header -->
+    
+    <!-- Header | Logo -->
+    <Style Selector="Border.header-border">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="Margin" Value="20 0 30 0"/>
+        <Setter Property="BoxShadow" Value="10 5 45 0 DarkGray"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0%, 50%" EndPoint="100%, 50%" >
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.1" Color="#C471F5"/>
+                        <GradientStop Offset="0.5" Color="#e074bc"/>
+                        <GradientStop Offset="1.0" Color="#FA71CD"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.header-button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="0"/>
+        
+        <Style Selector="^:pressed /template/ ContentPresenter">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        
+    </Style>
+    
+    <Style Selector="StackPanel.header-logo">
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+    
+    <Style Selector="StackPanel.header-logo > TextBlock, Image" >
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    
+    <!-- Header | Search -->
+    <Style Selector="TextBox.search">
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#F5F5F5"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    
+    
+    <!-- Header | Navigation buttons -->
+    <Style Selector="StackPanel.nav-buttons > Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        
+        <Style Selector="^:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#E5E5E5"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+        
+    </Style>
+    
+</Styles>

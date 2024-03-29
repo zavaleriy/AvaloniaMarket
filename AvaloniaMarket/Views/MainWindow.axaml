@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaMarket.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="1200" Height="800"
+        x:Class="AvaloniaMarket.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="AvaloniaMarket"
+        >
+
+    <Window.Styles>
+        <StyleInclude Source="/Styles/MainStyle.axaml"/>
+        <StyleInclude Source="/Styles/Icons.axaml"/>
+    </Window.Styles>
+    
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="31, 100, Auto" ShowGridLines="False">
+        <!-- TitleBar -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *" IsHitTestVisible="False" 
+              Background="{DynamicResource SystemAccentColor}">
+            <StackPanel Orientation="Horizontal" Margin="15 0">
+                <Image Source="/Assets/favicon.ico" Height="24" />
+                <TextBlock VerticalAlignment="Center" Margin="10 0"
+                           Text="AvaloniaMarket" FontSize="16"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- Header -->
+        <Grid Grid.Row="1" ColumnDefinitions="3.6*, 2*" ShowGridLines="False"
+              Margin="50 0 50 0">
+            
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
+                <!-- Header | Logo -->
+                <Border Classes="header-border">
+                    <Button Classes="header-button" Command="{Binding goRecomendationCommand}">
+                        <StackPanel Classes="header-logo">
+                            <Image Source="/Assets/shopping-cart-avalonia.png"
+                                   Height="50"/>
+                            <TextBlock VerticalAlignment="Center"
+                                       Text="AM" FontSize="32"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                
+                <!-- Header | Search -->
+                <TextBox Classes="search" Watermark="Поиск" VerticalAlignment="Center"
+                         MinWidth="500" Margin="30 0 0 0"/>
+            </StackPanel>
+            
+            
+            <!-- Header | Navigation buttons -->
+            <StackPanel Grid.Column="1" Classes="nav-buttons" 
+                        VerticalAlignment="Center" Orientation="Horizontal"
+                        Margin="40 0 0 0">
+                <!-- Nav | Basket -->
+                <Button>
+                    <StackPanel>
+                        <PathIcon Data="{StaticResource basket}" 
+                                  Foreground="DarkGray"/>
+                        <TextBlock>Корзина</TextBlock>
+                    </StackPanel>
+                </Button>
+                <!-- Nav | Favorite -->
+                <Button>
+                    <StackPanel>
+                        <PathIcon Data="{StaticResource heart}"
+                                  Foreground="DarkGray"/>
+                        <TextBlock>Избранное</TextBlock>
+                    </StackPanel>
+                </Button>
+                <!-- Nav | Orders -->
+                <Button>
+                    <StackPanel>
+                        <PathIcon Data="{StaticResource box}"
+                                  Foreground="DarkGray"/>
+                        <TextBlock>Заказы</TextBlock>
+                    </StackPanel>
+                </Button>
+                <!-- Nav | Login -->
+                <Button>
+                    <StackPanel>
+                        <PathIcon Data="{StaticResource person}"
+                                  Foreground="DarkGray"/>
+                        <TextBlock>Войти</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+        
+        <!-- Body -->
+        <Grid Grid.Row="2" ShowGridLines="True">
+            <TransitioningContentControl Content="{Binding CurrentPage}"/>
+        </Grid>
+        
+    </Grid>
+
+</Window>
