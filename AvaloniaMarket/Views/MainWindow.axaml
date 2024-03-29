@@ -36,7 +36,7 @@
             <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
                 <!-- Header | Logo -->
                 <Border Classes="header-border">
-                    <Button Classes="header-button" Command="{Binding goRecomendationCommand}">
+                    <Button Classes="header-button" Command="{Binding GoRecommendationCommand}">
                         <StackPanel Classes="header-logo">
                             <Image Source="/Assets/shopping-cart-avalonia.png"
                                    Height="50"/>
@@ -48,7 +48,14 @@
                 
                 <!-- Header | Search -->
                 <TextBox Classes="search" Watermark="Поиск" VerticalAlignment="Center"
-                         MinWidth="500" Margin="30 0 0 0"/>
+                         Text="{Binding SearchText}"
+                         MinWidth="440" Margin="30 0 0 0"/>
+                <Button Classes="button-search" 
+                        Command="{Binding SearchCommand}">
+                    <PathIcon Data="{StaticResource search}"
+                              Foreground="White"/>
+                </Button>
+                
             </StackPanel>
             
             
@@ -56,8 +63,8 @@
             <StackPanel Grid.Column="1" Classes="nav-buttons" 
                         VerticalAlignment="Center" Orientation="Horizontal"
                         Margin="40 0 0 0">
-                <!-- Nav | Basket -->
-                <Button>
+                <!-- Nav | Cart -->
+                <Button Command="{Binding GoCartCommand}">
                     <StackPanel>
                         <PathIcon Data="{StaticResource basket}" 
                                   Foreground="DarkGray"/>
@@ -65,7 +72,7 @@
                     </StackPanel>
                 </Button>
                 <!-- Nav | Favorite -->
-                <Button>
+                <Button Command="{Binding GoFavoriteCommand}">
                     <StackPanel>
                         <PathIcon Data="{StaticResource heart}"
                                   Foreground="DarkGray"/>
@@ -94,7 +101,7 @@
         
         <!-- Body -->
         <Grid Grid.Row="2" ShowGridLines="True">
-            <TransitioningContentControl Content="{Binding CurrentPage}"/>
+            <TransitioningContentControl Margin="50 0 50 0" Content="{Binding CurrentPage}"/>
         </Grid>
         
     </Grid>

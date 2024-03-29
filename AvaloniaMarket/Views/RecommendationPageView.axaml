@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:AvaloniaMarket.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaMarket.Views.RecomendationPageView"
-             x:DataType="vm:RecomendationPageViewModel">
+             x:Class="AvaloniaMarket.Views.RecommendationPageView"
+             x:DataType="vm:RecommendationPageViewModel">
     
     <Design.DataContext>
-        <vm:RecomendationPageViewModel/>
+        <vm:RecommendationPageViewModel/>
     </Design.DataContext>
     
     <StackPanel Spacing="5">
