@@ -31,5 +31,7 @@ public partial class Product
 
     public virtual ICollection<ProductReview> ProductReviews { get; set; } = new List<ProductReview>();
 
+    public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; } = new List<ShoppingCart>();
+
     public virtual ICollection<ViewHistory> ViewHistories { get; set; } = new List<ViewHistory>();
 }

@@ -3,15 +3,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:AvaloniaMarket.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="450"
              x:Class="AvaloniaMarket.Views.SearchPageView"
              x:DataType="vm:SearchPageViewModel">
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/SearchStyle.axaml"/>
+        <StyleInclude Source="/Styles/Icons.axaml"/>
+    </UserControl.Styles>
+    
     <Design.DataContext>
         <vm:SearchPageViewModel/>
     </Design.DataContext>
     
     <StackPanel>
-        <TextBlock Text="{Binding Title}"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" AllowAutoHide="False" Height="630">
+            <StackPanel Name="ProductsSp" Spacing="25"
+                        Width="800"
+                        Margin="10"/>
+        </ScrollViewer>
     </StackPanel>
     
 </UserControl>

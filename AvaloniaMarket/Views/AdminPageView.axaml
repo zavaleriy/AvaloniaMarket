@@ -1,0 +1,64 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaMarket.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="660"
+             x:Class="AvaloniaMarket.Views.AdminPageView"
+             x:DataType="vm:AdminPageViewModel">
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/Icons.axaml"/>
+    </UserControl.Styles>
+    
+    <Design.DataContext>
+        <vm:AdminPageViewModel/>
+    </Design.DataContext>
+    
+    <StackPanel Width="800">
+        <ScrollViewer Height="660">
+            <StackPanel Name="Edit" Spacing="10">
+                <TextBlock FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="SemiBold" Text="{Binding Product.ProductName, StringFormat='Редактирование {0}'}"/>
+                <Grid ColumnDefinitions="1.5*, 2*" ShowGridLines="False" Margin="20">
+                    <StackPanel Name="FieldsText" Grid.Column="0" VerticalAlignment="Center" Spacing="7">
+                        <TextBlock FontSize="16" Text="Наименование"/>
+                        <TextBlock Text="Описание"/>
+                        <TextBlock Text="Цена"/>
+                        <TextBlock Text="Количество на скалде"/>
+                        <TextBlock Text="Категория товара"/>
+                        <TextBlock Text="Изображения"/>
+                    </StackPanel>
+                    
+                    <StackPanel Name="FieldsEdit" Grid.Column="1" HorizontalAlignment="Center" Spacing="3">
+                        <StackPanel.Styles>
+                            <Style Selector="TextBox">
+                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                            </Style>
+                        </StackPanel.Styles>
+                        <TextBox Text="{Binding Product.ProductName}"/>
+                        <TextBox Text="{Binding Product.Description}"/>
+                        <TextBox Text="{Binding Product.Price}"/>
+                        <TextBox Text="{Binding Product.StockQuantity}"/>
+                        <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}"/> <!-- Категория товарв -->
+                        <!-- FilePicker for images -->
+                    </StackPanel>
+                </Grid>
+                
+                <StackPanel IsEnabled="{Binding ChangeProduct}">
+                    <Grid ColumnDefinitions="1.5*, 2*" ShowGridLines="False">
+                        <StackPanel Name="AttributeText" Grid.Column="0">
+                            <TextBlock/>
+                        </StackPanel>
+                        
+                        <StackPanel Name="AttributeEdit" Grid.Column="1">
+                            
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                
+                <Button HorizontalAlignment="Center" Content="Сохранить"
+                        Command="{Binding SaveCommand}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </StackPanel>
+    
+</UserControl>

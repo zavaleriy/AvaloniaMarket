@@ -3,14 +3,85 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:AvaloniaMarket.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="666"
              x:Class="AvaloniaMarket.Views.CartPageView"
              x:DataType="vm:CartPageViewModel">
     <Design.DataContext>
         <vm:CartPageViewModel/>
     </Design.DataContext>
     
-    <StackPanel>
-        <TextBlock FontSize="24" Text="{Binding Title}"/>
-    </StackPanel>
+    <Grid ShowGridLines="False" ColumnDefinitions="2*, 0.3*, 1*" Height="665">
+        <StackPanel Name="Panel" Margin="40 20 0 20" Spacing="10" 
+                    HorizontalAlignment="Left" Width="500">
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <TextBlock Text="Корзина" 
+                           FontWeight="SemiBold" FontSize="24"/>
+                <Button Content="Удалить выбранные" 
+                        Command="{Binding DeleteCommand}"/>
+            </StackPanel>
+            <!-- Products in cart -->
+            <ListBox Name="CartList" 
+                ItemsSource="{Binding RenderedCart}" Margin="40 0 0 0"
+                      MaxHeight="550" Width="600" 
+                      SelectionMode="Toggle, Multiple" SelectedItems="{Binding SelectedProducts}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Spacing="5">
+                            <Border Padding="10" BorderThickness="2" BorderBrush="DimGray" Margin="0 0 10 0">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Product.ProductName}" TextWrapping="Wrap"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                        <Panel Height="34" Width="96">
+                                            <Button Content="-" HorizontalAlignment="Left"
+                                                    Command="{Binding #CartList.((vm:CartPageViewModel)DataContext).DecreaseCommand}"
+                                                    CommandParameter="{Binding}"/>
+                                            <TextBlock Text="{Binding Amount}" 
+                                                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Button Content="+" HorizontalAlignment="Right"
+                                                    Command="{Binding #CartList.((vm:CartPageViewModel)DataContext).IncreaseCommand}"
+                                                    CommandParameter="{Binding}"/>
+                                        </Panel>
+                                        <TextBlock HorizontalAlignment="Right" Text="{Binding Product.Price, StringFormat='Цена: {0} Р'}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Button Content="Удалить" 
+                                    Command="{Binding #CartList.((vm:CartPageViewModel)DataContext).DeleteItemCommand}"
+                                    CommandParameter="{Binding Product.ProductId}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        
+        <Grid Grid.Column="2" RowDefinitions="3*, 1*" ShowGridLines="False">
+            <Border Grid.Row="0">
+                <StackPanel Margin="0 60">
+                    <TextBlock Margin="5" Text="Итого:"/>
+                    <DockPanel Margin="5">
+                        <TextBlock HorizontalAlignment="Left" 
+                                   FontWeight="SemiBold" FontSize="20"
+                                   Text="{Binding ProductCount, StringFormat='{}{0} товара'}"/>
+                        <TextBlock HorizontalAlignment="Right"
+                                   FontWeight="SemiBold" FontSize="20"
+                                   Text="{Binding Total, StringFormat='{}{0} Р'}"/> 
+                    </DockPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                Spacing="10" 
+                                Margin="5 20 5 10">
+                        <TextBox Watermark="Промокод" 
+                                 MaxWidth="230" Width="200" Height="40" 
+                                 Text="{Binding Promo}"
+                                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Button Content="Применить" Cursor="Hand" Command="{Binding CheckPromoCommand}"/>
+                    </StackPanel>
+                    <Button Margin="0 10" HorizontalAlignment="Center" 
+                            Content="Перейти к оформлению" FontSize="24"
+                            Cursor="Hand"
+                            />
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+    </Grid>
 </UserControl>

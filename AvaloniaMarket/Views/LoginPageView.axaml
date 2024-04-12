@@ -1,0 +1,26 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaMarket.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="450"
+             x:Class="AvaloniaMarket.Views.LoginPageView"
+             x:DataType="vm:LoginPageViewModel">
+    <Design.DataContext>
+        <vm:LoginPageViewModel/>
+    </Design.DataContext>
+    
+    <Border HorizontalAlignment="Center" Margin="0 150">
+        <StackPanel Spacing="10" IsEnabled="{Binding FormEnabled}">
+            <StackPanel.Styles>
+                <Style Selector="TextBox">
+                    <Setter Property="Width" Value="200"/>
+                </Style>
+            </StackPanel.Styles>
+            <TextBox Watermark="Login" Text="{Binding Login}"/>
+            <TextBox Watermark="Password" PasswordChar="•" Text="{Binding Password}"/>
+            <Button Content="Войти" HorizontalAlignment="Center" Command="{Binding SignInCommand}"/>
+        </StackPanel>
+    </Border>
+    
+</UserControl>

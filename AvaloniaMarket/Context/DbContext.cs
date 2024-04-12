@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using AvaloniaMarket.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +40,8 @@ public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
     public virtual DbSet<PromoCode> PromoCodes { get; set; }
 
     public virtual DbSet<ShippingInfo> ShippingInfos { get; set; }
+
+    public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -333,6 +334,32 @@ public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
                 .HasConstraintName("shipping_info_order_id_fkey");
         });
 
+        modelBuilder.Entity<ShoppingCart>(entity =>
+        {
+            entity.HasKey(e => e.CartId).HasName("shopping_cart_pkey");
+
+            entity.ToTable("shopping_cart");
+
+            entity.Property(e => e.CartId).HasColumnName("cart_id");
+            entity.Property(e => e.AddedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("added_at");
+            entity.Property(e => e.ProductId).HasColumnName("product_id");
+            entity.Property(e => e.Quantity).HasColumnName("quantity");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ShoppingCarts)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("shopping_cart_product_id_fkey");
+
+            entity.HasOne(d => d.User).WithMany(p => p.ShoppingCarts)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("shopping_cart_user_id_fkey");
+        });
+
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("users_pkey");
@@ -351,6 +378,7 @@ public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .HasColumnName("email");
+            entity.Property(e => e.IsAdmin).HasColumnName("is_admin");
             entity.Property(e => e.Password)
                 .HasMaxLength(100)
                 .HasColumnName("password");

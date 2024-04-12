@@ -3,16 +3,82 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:AvaloniaMarket.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="660"
              x:Class="AvaloniaMarket.Views.ItemPageView"
              x:DataType="vm:ItemPageViewModel">
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/ItemStyle.axaml"/>
+        <StyleInclude Source="/Styles/Icons.axaml"/>
+    </UserControl.Styles>
     
     <Design.DataContext>
         <vm:ItemPageViewModel/>
     </Design.DataContext>
     
     <StackPanel>
-        <TextBlock FontSize="24" Text="{Binding Title}"/>
+        <ScrollViewer Height="660">
+            <StackPanel Width="800">
+                
+                <Button Content="{Binding Category.CategoryName}"
+                        Tag="{Binding Category.CategoryId}"
+                        Classes="category" Click="CategoryOnClick"/>
+                <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" FontSize="28" 
+                           Text="{Binding Product.ProductName}"/>
+                
+                <Border Classes="border-item">
+                    <Grid ShowGridLines="False" ColumnDefinitions="1.5*, 2*">
+                        
+                        <Panel Grid.Column="0">
+                            <Carousel Name="Slides" ItemsSource="{Binding Images}"/>
+                            <Panel Margin="10 20 10 20">
+                                <Button Click="Previous" Classes="carousel-move">&lt;</Button>
+                                <Button Click="Next" Classes="carousel-move"
+                                        HorizontalAlignment="Right">&gt;</Button>
+                            </Panel>
+                        </Panel>
+                        
+                        <StackPanel Grid.Column="1" 
+                                    Margin="20" Spacing="20" 
+                                    DataContext="{Binding Product}">
+                            <TextBlock  Text="{Binding Description}" TextWrapping="Wrap"/>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <!-- TODO: Отзывы, Количество на складе(Много, Достаточно, Заканчивается, Закончился) -->
+                                <TextBlock Text="'Отзывы'"/>
+                                <TextBlock Text="'Количество на складе'"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="10" >
+                                <TextBlock FontSize="18" VerticalAlignment="Center" Text="{Binding Price, StringFormat='{}{0} Р'}"/>
+                                <Button Click="Favorite"  Tag="{Binding ProductId}">
+                                    <PathIcon Foreground="DarkGray" Name="Fvr" Cursor="Hand" Data="{StaticResource heart}"/>
+                                </Button>
+                                <Button Content="Купить" Name="BuyBtn" Click="Buy" Tag="{Binding ProductId}"
+                                        Cursor="Hand" FontSize="18"/>
+                            </StackPanel>
+                        </StackPanel>
+                        
+                    </Grid>
+                </Border>
+                
+                <StackPanel Name="AdminPanel" IsVisible="{Binding AdminPanel}"
+                            Margin="20" HorizontalAlignment="Center">
+                    <TextBlock Text="Редактирование" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="20" Foreground="Red"/>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Button Click="Edit_OnClick" HorizontalAlignment="Center" Content="Редактировать"/>
+                        <Button Click="Delete_OnClick" Cursor="Hand" HorizontalAlignment="Center" Content="Удалить"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" FontSize="28" 
+                               Text="Характеристики"/>
+                    <Grid Margin="0 10 0 10" ColumnDefinitions="1.5*, 2*">
+                        <StackPanel Name="AttributeKey" Grid.Column="0"/>
+                        <StackPanel Name="AttributeValue" Grid.Column="1"/>
+                    </Grid>
+                </StackPanel>
+                
+            </StackPanel>
+        </ScrollViewer>
     </StackPanel>
     
 </UserControl>
